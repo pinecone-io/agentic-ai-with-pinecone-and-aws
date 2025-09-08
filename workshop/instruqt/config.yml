@@ -1,0 +1,7 @@
+version: "3"
+containers:
+- name: jupyter
+  image: jupyter/pyspark-notebook
+  ports:
+  - 8888
+  memory: 512

@@ -1,0 +1,5 @@
+streamlit>=1.28.0
+boto3>=1.40.18
+ddgs>=9.5.5
+python-dotenv>=1.1.1
+pinecone>=7.3.0

@@ -1,0 +1,5 @@
+.env
+.venv/
+__pycache__/
+
+data/agentic_ai_with_bedrock_dataset/
