@@ -10,7 +10,7 @@ enhanced_loading: null
 ---
 # 1. Create a Pinecone account
 ==
-1. In the Instruqt web browser, you should be viewing the Pinecone login and create account page. If not, open a new browser tab outside of Instruct and navigate to https://app.pinecone.io.
+1. Open a new browser tab outside of Instruct and navigate to https://app.pinecone.io to create a new Pinecone account or to login.
 2. Enter your email to login or create a new, free Pinecone account.
 3. Once you've created your account, log in.
 4. After logging in, you should see a page that looks just like this stunning screenshot:
@@ -25,14 +25,14 @@ Let's dive in and create your first index! In this workshop, we'll do this in th
 1. Now that you have a Pinecone account, log in and look for the "Create Index" button right in the center of the screen. Click on it to start the magic!
 2. Give your index the name `agentic-ai-with-bedrock`. This is the name of the index we'll use throughout this workshop.
 3. In the Configuration section, select `Custom Settings` then select the `Dense` for Vector type and set the dimensions of your index to `1024`. This value determines the size of the vectors your index will handle.
-4. Select the metric to "cosine".
-5. Select the "Serverless" option and leave the default Advanced settings as is.
-6. Select the 'us-east-1' region.
+4. Select the metric to `cosine`.
+5. Select the `Serverless` option and leave the default Advanced settings as is.
+6. Select the `us-east-1` region.
 7. Finally, click on the "Create Index" button at the bottom to bring your index to life!
 
 Watch in awe as your index is swiftly created, along with fascinating details about its configuration and creation speed. This is made possible by Pinecone's serverless option, which provides the best out-of-the-box experience, allowing you to scale to billions of vectors while still being cost-effective.
 
-#3. Create a Pinecone API key
+# 3. Create a Pinecone API key
 ==
 
 TODO

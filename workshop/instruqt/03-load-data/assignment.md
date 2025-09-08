@@ -45,7 +45,7 @@ The following notebook shows:
 To load data into Pinecone:
 1. Navigate to the Jupyter tab
 2. Open the notebook `1_data_loading_pipeline.ipynb`
-3. Select `conda_python3` for the kernel
+3. Select `Python 3 (ipykernel)` for the kernel in the upper right
 4. Execute each cell in the notebook
 
 Take some time to work through this notebook to load data into your Pinecone index, as in the next challenge you'll build the retrieval and augmentation steps.

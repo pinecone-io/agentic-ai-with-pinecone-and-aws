@@ -57,5 +57,5 @@ The following notebook shows:
 To generate a response using retrieval-augmented generation:
 1. Navigate to the Jupyter tab
 2. Open the notebook `2_data_query_pipeline.ipynb`
-3. Select `conda_python3` for the kernel
+3. Select `Python 3 (ipykernel)` for the kernel in the upper right
 4. Execute each cell in the notebook

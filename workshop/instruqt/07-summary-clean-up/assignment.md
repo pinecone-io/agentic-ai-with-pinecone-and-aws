@@ -28,7 +28,7 @@ Because you are running this as part of a Pinecone-hosted event and in the AWS s
 To delete the Pinecone index:
 1. Navigate to the Jupyter tab
 2. Open the notebook `4_clean_up.ipynb`
-3. Select `conda_python3` for the kernel
+3. Select `Python 3 (ipykernel)` for the kernel in the upper right
 4. Execute the cells in the notebook to delete the index.
 
 # Wrapping up
