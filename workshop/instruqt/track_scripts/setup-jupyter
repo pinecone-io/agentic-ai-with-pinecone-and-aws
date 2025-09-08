@@ -1,22 +1,28 @@
-echo "running as:"
+echo "Running as:"
 whoami
 
+echo "Setting up aliases..."
 echo 'alias jupyter=/opt/conda/bin/jupyter' >> /home/jovyan/.bashrc
+echo 'alias python=/opt/conda/bin/python' >> /home/jovyan/.bashrc
+echo 'alias pip=/opt/conda/bin/pip' >> /home/jovyan/.bashrc
 
 # These are not available by the time the jupyter server starts, use BEDROCK_ACCESS_KEY, BEDROCK_SECRET_KEY instead
 # echo 'export AWS_ACCESS_KEY_ID="$BEDROCK_ACCESS_KEY"' >> /home/jovyan/.bashrc
 # echo 'export AWS_SECRET_ACCESS_KEY="$BEDROCK_SECRET_KEY"' >> /home/jovyan/.bashrc
 
-echo "current working directory: "
+echo "Current working directory is: "
 pwd
 
-echo "cd to / ..."
+echo "Changing directory to / ..."
 cd /
 
-echo "cloning the workshop repo..."
+echo "Cloning the workshop repo..."
 git clone https://github.com/pinecone-io/agentic-ai-with-bedrock
 
-echo "unzipping workshop data..."
+echo "Changing ownership of the workshop repo..."
+chown -R jovyan: /agentic-ai-with-bedrock
+
+echo "Unzipping workshop data..."
 cd /agentic-ai-with-bedrock/data/
 unzip agentic_ai_with_bedrock_dataset.zip
 
