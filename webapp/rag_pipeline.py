@@ -94,7 +94,7 @@ class RAGPipeline:
             for content_block in response_message["content"]:
                 if "toolUse" in content_block:
                     print(  
-                        f"Calling tool name: {content_block["toolUse"]["name"]} | Parameters: {content_block["toolUse"]["input"]}"
+                        f"Calling tool name: {content_block['toolUse']['name']} | Parameters: {content_block['toolUse']['input']}"
                     )
                     print("=" * 50)
                     # Call the tool with input
