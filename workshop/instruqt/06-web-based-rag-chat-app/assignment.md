@@ -27,7 +27,7 @@ enhanced_loading: null
 ---
 TODO
 
-.env file
+Update .env file to include your PINECONE_API_KEY
 
 ```
 python -m venv .venv
