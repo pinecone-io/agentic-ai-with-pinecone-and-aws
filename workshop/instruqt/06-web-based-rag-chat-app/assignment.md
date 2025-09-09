@@ -22,6 +22,11 @@ tabs:
   type: service
   hostname: jupyter
   port: 8501
+- id: idt5aj6iqids
+  title: IDE
+  type: code
+  hostname: jupyter
+  path: /agentic-ai-with-pinecone-and-aws/webapp
 difficulty: ""
 enhanced_loading: null
 ---
