@@ -2,4 +2,4 @@
 .venv/
 __pycache__/
 
-data/agentic_ai_with_bedrock_dataset/
+data/agentic_ai_with_pinecone_and_aws_dataset/

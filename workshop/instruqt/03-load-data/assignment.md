@@ -3,8 +3,8 @@ slug: load-data
 id: jlhh8fiu6h45
 type: challenge
 title: Load data into Pinecone
-teaser: In this step, we'll build the data storage system to ingest all the source
-  data into an external knowledge base, a Pinecone index
+teaser: In this step, we'll build the data ingestion pipeline to load the source data
+  into an external knowledge base, a Pinecone index
 tabs:
 - id: pznrwesdbzps
   title: Terminal
@@ -31,21 +31,41 @@ When working with large-scale text data, turning it into a searchable format is 
 
 This pipeline is the foundation for building robust search and recommendation systems.
 
-![pinecone_aws_workshop_data_storage_system.png](../assets/pinecone_aws_workshop_data_storage_system.png)
+![Embedding data and upserting to Pinecone](../assets/03-embedding-data-to-pinecone.png)
+
+# Working with Jupyter notebooks
+==
+
+During this workshop, we'll be working through Jupyter notebooks written in Python. These notebooks are a combination of markdown and code cells.
+
+- Markdown cells are used to provide context and instructions for the code cells.
+- Code cells are used to execute the code.
+- We'll use the `Python 3 (ipykernel)` kernel for the code cells throughout this workshop.
+- You can run the code cells by clicking the `Run` button in the upper right of the cell, by clicking the `Shift + Enter` key combination, or by clicking the `Ctrl + Enter` key combination.
+
+The first time you access the Jupyter tab, you'll be prompted to enter a token or password. To get the token, navigate to the [Terminal tab](tab-0) and run the following command:
+
+```bash,run
+jupyter server list | grep -o 'token=[a-f0-9]*' | sed 's/token=//'
+```
+
+Copy that token and paste it into the [Jupyter tab](tab-1). You should see the Jupyter dashboard with the files we'll use throughout this workshop.
+
+The data we'll load into Pinecone is located in the `data` folder. The notebooks we'll be working through are located in the `notebooks` folder.
 
 # Building the data ingestion pipeline
 ==
 
 The following notebook shows:
-- parsing the text data
-- chunking the data
-- using the AWS SDK for Python (Boto3) to convert data to vector embeddings via Amazon Bedrock
-- upserting it to Pinecone
+- how to parse the text data
+- how to chunk the data
+- how to use the AWS SDK for Python (Boto3) to convert data to vector embeddings via Amazon Bedrock
+- how to upsert it to Pinecone
 
 To load data into Pinecone:
-1. Navigate to the Jupyter tab
-2. Open the notebook `1_data_loading_pipeline.ipynb`
+1. Navigate to the [Jupyter tab](tab-1)
+2. Open the notebook in the `notebooks` folder called `1_data_loading_pipeline.ipynb`
 3. Select `Python 3 (ipykernel)` for the kernel in the upper right
-4. Execute each cell in the notebook
+4. Work through each cell in the notebook
 
 Take some time to work through this notebook to load data into your Pinecone index, as in the next challenge you'll build the retrieval and augmentation steps.

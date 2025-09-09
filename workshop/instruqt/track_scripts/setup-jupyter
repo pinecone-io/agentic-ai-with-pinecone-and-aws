@@ -22,9 +22,10 @@ git clone https://github.com/pinecone-io/agentic-ai-with-pinecone-and-aws
 cd /agentic-ai-with-pinecone-and-aws/webapp
 cp .env.example .env
 
+echo "Unzipping workshop data..."
+cd /agentic-ai-with-pinecone-and-aws/data/
+unzip agentic_ai_with_pinecone_and_aws_dataset.zip
+
 echo "Changing ownership of the workshop repo..."
 chown -R jovyan: /agentic-ai-with-pinecone-and-aws
 
-echo "Unzipping workshop data..."
-cd /agentic-ai-with-pinecone-and-aws/data/
-unzip agentic_ai_with_bedrock_dataset.zip
