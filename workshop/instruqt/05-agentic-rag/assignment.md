@@ -3,9 +3,8 @@ slug: agentic-rag
 id: y3ygny5gklwa
 type: challenge
 title: Run multiple tools with agentic RAG
-teaser: In this module, you'll learn hoow to implement agentic RAG using multiple
-  tools to retrieve data from both a web search and semantic search over a Pinecone
-  index.
+teaser: In this module, you'll learn how to implement agentic RAG using multiple tools
+  to retrieve data from both a web search and semantic search over a Pinecone index.
 tabs:
 - id: wru3vpetuhxw
   title: Terminal
