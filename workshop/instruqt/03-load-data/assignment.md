@@ -16,7 +16,7 @@ tabs:
   title: Jupyter
   type: service
   hostname: jupyter
-  path: /lab/workspaces/auto-c/tree/agentic-ai-with-bedrock/
+  path: /lab/workspaces/auto-c/tree/agentic-ai-with-pinecone-and-aws/
   port: 8888
 difficulty: ""
 enhanced_loading: null

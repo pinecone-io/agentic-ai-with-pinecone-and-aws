@@ -1,9 +1,9 @@
 slug: agentic-rag-with-pinecone
 id: xhoqbdyuy4tp
-title: Agentic RAG with Pinecone
-teaser: 'Agentic AI for Semantic Search: Retrieval & Reranking for Domain Intelligence'
+title: Agentic AI with Pinecone and AWS
+teaser: Agentic AI with Pinecone and AWS
 description: |-
-  This workshop provides participants with practical skills and hands-on experience in building agentic AI for semantic search applications using [Pinecone](https://app.pinecone.io/). During the workshop, attendees will:
+  This workshop provides participants with practical skills and hands-on experience in building agentic AI for semantic search applications using [Pinecone](https://app.pinecone.io/) and AWS. During the workshop, attendees will:
   - Learn the fundamentals of vector database concepts and Pinecone architecture
   - Gain practical skills for semantic search in real-world applications
   - Build an end-to-end Agentic RAG chat app using Pinecone and AWS
@@ -21,5 +21,5 @@ lab_config:
   feedback_tab_enabled: false
   loadingMessages: true
   hideStopButton: false
-checksum: "13719882373725290044"
+checksum: "7798571964320239438"
 enhanced_loading: false

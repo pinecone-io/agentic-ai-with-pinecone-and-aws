@@ -23,7 +23,7 @@ Pinecone indexes are incredibly powerful tools that can handle billions of vecto
 Let's dive in and create your first index! In this workshop, we'll do this in the Console, so you can familiarize yourself with it. Later in this workshop, we'll show you how to create an index through a Jupyter notebook as well.
 
 1. Now that you have a Pinecone account, log in and look for the "Create Index" button right in the center of the screen. Click on it to start the magic!
-2. Give your index the name `agentic-ai-with-bedrock`. This is the name of the index we'll use throughout this workshop.
+2. Give your index the name `agentic-ai-with-pinecone-and-aws`. This is the name of the index we'll use throughout this workshop.
 3. In the Configuration section, select `Custom Settings` then select the `Dense` for Vector type and set the dimensions of your index to `1024`. This value determines the size of the vectors your index will handle.
 4. Select the metric to `cosine`.
 5. Select the `Serverless` option and leave the default Advanced settings as is.

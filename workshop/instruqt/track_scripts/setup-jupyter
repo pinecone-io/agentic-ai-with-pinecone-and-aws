@@ -17,14 +17,14 @@ echo "Changing directory to / ..."
 cd /
 
 echo "Cloning the workshop repo..."
-git clone https://github.com/pinecone-io/agentic-ai-with-bedrock
+git clone https://github.com/pinecone-io/agentic-ai-with-pinecone-and-aws
 
-cd /agentic-ai-with-bedrock/webapp
+cd /agentic-ai-with-pinecone-and-aws/webapp
 cp .env.example .env
 
 echo "Changing ownership of the workshop repo..."
-chown -R jovyan: /agentic-ai-with-bedrock
+chown -R jovyan: /agentic-ai-with-pinecone-and-aws
 
 echo "Unzipping workshop data..."
-cd /agentic-ai-with-bedrock/data/
+cd /agentic-ai-with-pinecone-and-aws/data/
 unzip agentic_ai_with_bedrock_dataset.zip

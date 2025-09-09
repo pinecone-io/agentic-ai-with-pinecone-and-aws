@@ -15,7 +15,7 @@ tabs:
   title: Terminal
   type: terminal
   hostname: jupyter
-  workdir: /agentic-ai-with-bedrock/webapp
+  workdir: /agentic-ai-with-pinecone-and-aws/webapp
   cmd: su jovyan
 - id: za4a81dpnlsc
   title: Chat app

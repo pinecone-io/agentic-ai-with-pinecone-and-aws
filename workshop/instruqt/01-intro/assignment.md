@@ -1,6 +1,6 @@
 ---
 slug: intro
-id: qmwd8knhwa6k
+id: bx4lxyzh9w6y
 type: challenge
 title: Introduction
 teaser: Learn about Pinecone, AWS, and what we're building today, a simple retrieval-augmented
