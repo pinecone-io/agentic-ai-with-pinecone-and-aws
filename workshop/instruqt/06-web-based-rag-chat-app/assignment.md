@@ -6,11 +6,11 @@ title: Web-based RAG chat app
 teaser: A Streamlit application that demonstrates an agentic retrieval-augmented generation
   (RAG) chat interface powered by Pinecone, Amazon Bedrock, and a simple web search.
 tabs:
-- id: knjxflj4zf7w
-  title: Terminal
-  type: terminal
+- id: idt5aj6iqids
+  title: IDE
+  type: code
   hostname: jupyter
-  workdir: /webapp
+  path: /agentic-ai-with-pinecone-and-aws/webapp
 - id: zxdbljo9uyip
   title: Terminal
   type: terminal
@@ -22,21 +22,55 @@ tabs:
   type: service
   hostname: jupyter
   port: 8501
-- id: idt5aj6iqids
-  title: IDE
-  type: code
-  hostname: jupyter
-  path: /agentic-ai-with-pinecone-and-aws/webapp
 difficulty: ""
 enhanced_loading: null
 ---
-TODO
+# Building a web-based RAG chat app
+==
 
-Update .env file to include your PINECONE_API_KEY
+In this module, we'll incorporate the agentic RAG pipeline, `run_agent`, from the last module and interact with it through a Streamlit web app.
 
-```
+# Running the app
+==
+
+To get the app running, we need to set up a few bits.
+
+## Setup .env file with your Pinecone API key
+
+In the [IDE tab](tab-0), update the `.env` file with your `PINECONE_API_KEY` from earlier in this workshop.
+
+Verify in this file that the Pinecone index name and namespace are the same as you used in the data loading module (they should be if you used all the defaults).
+
+## Create the Python virtual environment
+
+Now we need to create the Python virtual environment and install the dependencies. In the [Terminal tab](tab-1) run:
+
+```bash,run
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+## Run the app
+
+Now it's time to run the app:
+
+```bash,run
 python -m streamlit run app.py
 ```
+
+Head over to the [Chat app tab](tab-2) and ask your agent some questions. Here are some example questions to ask:
+
+- What is the capital of France?
+- Which company did Rod Canion cofound?
+- What is the revenue of Compaq in 2001?
+- What is 2001 revenue of the company Rod Canion cofound?
+- Changes in Compaq's product offerings and their impacts on sales
+
+## Review the decisions, search results, and input/output
+
+You can review the decisions, search results, and input/out from the [Terminal tab](tab-1).
+
+## Explore the code
+
+Explore the code to review the two tools we created in the last module and the `run_agent` function in action.
