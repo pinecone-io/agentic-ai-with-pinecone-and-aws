@@ -42,6 +42,25 @@ In this workshop you learned:
 # Extra resources
 ==
 
+We'd love to keep chatting with you after this workshop and as you continue your journey using Pinecone. Below are some resources to help you continue learning and building with Pinecone:
+
 TODO
 
-discord invite
+- Join the rest of the Pinecone community on Discord
+- Follow [Jenna Pederson](https://www.linkedin.com/in/jennapederson/) and [Vamshi Enabothala](https://www.linkedin.com/in/vkenabothala/) on LinkedIn
+- [Grab this workshop, the data, and all the code from today on GitHub](https://github.com/pinecone-io/agentic-ai-with-pinecone-and-aws)
+- [Read about the limitations of foundation models and how RAG can address them](https://www.pinecone.io/learn/retrieval-augmented-generation/)
+- [Read why RAG is still relevant in 2025](https://www.pinecone.io/learn/rag-2025/)
+- [Watch to learn about the secret to production-ready AI](https://youtu.be/buvRFJ-snAc)
+- [Work through more RAG notebooks featuring hybrid search, Anthropic, OpenAI, LangChain, and LangGraph](https://docs.pinecone.io/examples/notebooks#retrieval-augmented-generation-rag)
+- Sign up for the Pinecone newsletter
+
+
+# Workshop complete! 🎉
+==
+
+Congratulations! You've successfully completed the Agentic AI with Pinecone and AWS workshop. You now have hands-on experience building intelligent applications with vector databases, RAG architectures, and cloud services.
+
+We hope you enjoyed this journey and feel confident to continue building amazing AI applications with Pinecone.
+
+Happy building!

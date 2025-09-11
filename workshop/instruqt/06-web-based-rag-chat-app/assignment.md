@@ -28,7 +28,14 @@ enhanced_loading: null
 # Building a web-based RAG chat app
 ==
 
-In this module, we'll incorporate the agentic RAG pipeline, `run_agent`, from the last module and interact with it through a Streamlit web app.
+In this module, we'll incorporate the agentic RAG pipeline, `run_agent`, from the last module and interact with it through a Streamlit web app chat interface. Remember that this `run_agent` function does the following:
+
+1. Sends the initial user query to the model through Amazon Bedrock
+2. The model decides if it can answer or if it needs to use a tool and which tool to use
+3. The `run_agent` function invokes any tools, if necessary
+4. It then combines the tool response (search results) with the original user query to form the "context"
+5. Finally, the context is sent back to the model to generate a response
+6. Optionally, the user continues to ask questions and this repeats, including the conversation as "context"
 
 # Running the app
 ==
