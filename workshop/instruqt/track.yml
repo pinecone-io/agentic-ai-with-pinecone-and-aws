@@ -14,12 +14,12 @@ developers:
 - jenna@pinecone.io
 - vamshi.e@pinecone.io
 idle_timeout: 600
-timelimit: 12000
+timelimit: 12600
 lab_config:
   sidebar_enabled: true
   feedback_recap_enabled: true
   feedback_tab_enabled: false
   loadingMessages: true
   hideStopButton: false
-checksum: "4893842518003581558"
+checksum: "8493492663744297570"
 enhanced_loading: false

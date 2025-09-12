@@ -11,7 +11,7 @@ tabs:
   title: Jupyter
   type: service
   hostname: jupyter
-  path: /lab/workspaces/auto-c/tree/agentic-ai-with-pinecone-and-aws/
+  path: /lab/workspaces/auto-c/tree/agentic-ai-with-pinecone-and-aws/notebooks/2_data_query_pipeline.ipynb
   port: 8888
 - id: uba1nlvg1yyv
   title: Terminal
