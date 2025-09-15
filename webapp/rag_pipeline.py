@@ -66,8 +66,26 @@ class RAGPipeline:
             toolConfig=self.tool_config,
         )
 
-    def run_agent(self, user_query):
+    def _send_conversation_to_bedrock_stream(self, conversation):
+        print("Sending the query to Bedrock (streaming):")
+        print(conversation)
+        print("=" * 50)
 
+        # Send the conversation, system prompt, and tool configuration, and return the streaming response
+        return self.bedrock.converse_stream(
+            modelId=self.generation_model_id,
+            messages=conversation,
+            system=self.system_prompt,
+            toolConfig=self.tool_config,
+        )
+
+    def _invoke_tool(self, tool_name, tool_input):
+        return self.functions_map[tool_name](tool_input)
+
+    def run_agent(self, user_query):
+        """Run the agent with streaming response for the final answer.
+        Returns a generator that yields (chunk, full_content) tuples.
+        """
         conversation = []
 
         # Step 1: get user query
@@ -98,7 +116,7 @@ class RAGPipeline:
                     )
                     print("=" * 50)
                     # Call the tool with input
-                    tool_result = self.functions_map[content_block["toolUse"]["name"]](
+                    tool_result = self._invoke_tool(content_block["toolUse"]["name"],
                         content_block["toolUse"]["input"]
                     )
 
@@ -133,22 +151,24 @@ class RAGPipeline:
             print("Model response:")
             print(bedrock_response)
             print("=" * 50)
-            
-        conversation.append(
-            {
-                "role": "assistant",
-                "content": bedrock_response["output"]["message"]["content"][0]["text"],
-            }
-        )
         
-        # Print final response
-        print("Final response:")
-        print(bedrock_response["output"]["message"]["content"][0]["text"])
+        # For the final response, use streaming
+        print("Final streaming response:")
         print("=" * 50)
         
-        agent_message = {
-                "role": "assistant",
-                "content": bedrock_response["output"]["message"]["content"][0]["text"],
-                "timestamp": datetime.now().strftime("%H:%M:%S")
-            }
-        return agent_message
+        # Use streaming for the final response
+        stream_response = self._send_conversation_to_bedrock_stream(conversation)
+        
+        # Process the streaming response and yield chunks
+        full_content = ""
+        for event in stream_response['stream']:
+            if 'contentBlockDelta' in event:
+                delta_text = event['contentBlockDelta']['delta']['text']
+                full_content += delta_text
+                print(delta_text, end='', flush=True)
+                
+                # Yield only the text chunk for st.write_stream
+                yield delta_text
+        
+        print("\n" + "=" * 50)
+        

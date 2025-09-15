@@ -20,7 +20,7 @@ class PineconeVectorSearchTool:
         self.bedrock = bedrock
         self.embedding_model_id = os.getenv("EMBEDDING_MODEL_ID")
 
-    def embed_query(self, query: str) -> float:
+    def _embed_query(self, query: str) -> float:
         """
         Generate text embedding by using Amazon Bedrock.
         Args:
@@ -80,7 +80,7 @@ class PineconeVectorSearchTool:
         
         query = input_data.get("query")
 
-        embedding = self.embed_query(query)
+        embedding = self._embed_query(query)
 
         search_results = self.index.query(
             namespace=self.namespace,

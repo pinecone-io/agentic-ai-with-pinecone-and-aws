@@ -1,6 +1,6 @@
-# Streamlit Agentic RAG Chat Example
+# ChatterPine 2000 - A chat-based RAG app
 
-A Streamlit application that demonstrates an agentic retrieval-augmented generation (RAG) chat interface powered by Pinecone, Amazon Bedrock, and a simple web search. This application provides responses by combining knowledge from a vector database with real-time web search results.
+A Chainlit application that demonstrates an agentic retrieval-augmented generation (RAG) chat interface powered by Pinecone, Amazon Bedrock, and a simple web search tool. This application provides responses by combining knowledge from a vector database with real-time web search results.
 
 ## Features
 
@@ -134,15 +134,15 @@ Install the required dependencies:
 
 ### Create index and load data
 
-TODO: This sample app is currently used as part of a workshop and dependent on data that is pre-loaded.
+This sample app is used as part of a [workshop](../workshop/README.md) and dependent on data that is pre-loaded into a Pinecone index. You can refer to the Jupyter notebook [1_data_loading_pipeline](../notebooks/1_data_loading_pipeline.ipynb) to load data for this chat app.
 
 ### Start the app
 
-1. Start the Streamlit app from the project root directory:
+1. Start the app from the project root directory:
    ```bash
-   streamlit run app.py
+   chainlit run app.py
    ```
 
-2. Open your web browser and navigate to the URL shown in the terminal (usually `http://localhost:8501`)
+2. Open your web browser and navigate to the URL shown in the terminal (usually `http://localhost:8000`)
 
 3. Start chatting!

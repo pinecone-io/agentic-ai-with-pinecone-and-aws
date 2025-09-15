@@ -1,75 +1,103 @@
-import streamlit as st
-from datetime import datetime
+import chainlit as cl
 from rag_pipeline import RAGPipeline
 from dotenv import load_dotenv
+import asyncio
 
+# Load environment variables
 load_dotenv()
-rag_pipeline = RAGPipeline()
 
-# Page configuration
-st.set_page_config(
-    page_title="Chat Interface",
-    page_icon="💬",
-    layout="wide"
-)
+# Initialize the RAG pipeline
+@cl.cache
+def get_rag_pipeline():
+    return RAGPipeline()
 
-# Initialize session state for conversation history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# Sample questions for users to select from
+SAMPLE_QUESTIONS = [
+    "What is the capital of France?",
+    "Which company did Rod Canion cofound?",
+    "What is the revenue of Compaq in 2001?",
+    "What is 2001 revenue of the company Rod Canion cofound?",
+    "Changes in Compaq's product offerings and their impacts on sales"
+]
 
-# App title
-st.title("💬 Chat Interface")
-st.markdown("---")
-
-# Display conversation history
-if st.session_state.messages:
+@cl.on_chat_start
+async def start_chat():
+    """Initialize the chat session and send welcome message with sample questions."""
+    # Get the RAG pipeline instance
+    rag_pipeline = get_rag_pipeline()
     
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
-            st.caption(f"Sent at: {message['timestamp']}")
-
-# Chat input
-st.markdown("---")
-st.subheader("Chat with the data")
-
-# Use a form to automatically clear the input after submission
-with st.form(key="message_form", clear_on_submit=True):
-    user_input = st.text_area(
-        "What questions do you have about the data?",
-        key="user_input"
-    )
+    # Store the pipeline in the user session
+    cl.user_session.set("rag_pipeline", rag_pipeline)
     
-    # Submit button
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col2:
-        submit_button = st.form_submit_button("Send Message", type="primary", use_container_width=True)
+    # Create action buttons for sample questions
+    actions = [
+        cl.Action(name=f"question_{i}", payload={"question": question}, label=question) 
+        for i, question in enumerate(SAMPLE_QUESTIONS)
+    ]
     
-    # Handle message submission
-    if submit_button and user_input.strip():
-        # Add user message to history
-        user_message = {
-            "role": "user",
-            "content": user_input.strip(),
-            "timestamp": datetime.now().strftime("%H:%M:%S")
-        }
-        st.session_state.messages.append(user_message)
+    # Send welcome message with sample questions
+    await cl.Message(
+        content="🤖 Welcome to ChatterPine 2000!\n\nYou can ask me questions about various topics, or select from the sample questions below:",
+        actions=actions
+    ).send()
+
+# Create individual action callbacks for each sample question
+@cl.action_callback("question_0")
+@cl.action_callback("question_1")
+@cl.action_callback("question_2")
+@cl.action_callback("question_3")
+@cl.action_callback("question_4")
+async def on_action(action: cl.Action):
+    """Handle when a user clicks on a sample question."""
+    # Process the selected question as if it were a user message
+    question = action.payload["question"]
+    
+    await process_user_message(question)
+
+@cl.on_message
+async def on_message(message: cl.Message):
+    """Handle user messages and stream responses from the RAG pipeline."""
+    await process_user_message(message.content)
+
+async def process_user_message(user_input: str):
+    """Process user input and stream the response from the RAG pipeline."""
+    # Get the RAG pipeline from the user session
+    rag_pipeline = cl.user_session.get("rag_pipeline")
+    
+    if not rag_pipeline:
+        await cl.Message(content="Error: RAG pipeline not initialized. Please refresh the page.").send()
+        return
+    
+    # Create a message placeholder for streaming
+    msg = cl.Message(content="")
+    await msg.send()
+    
+    try:
+        # Get the streaming response from the RAG pipeline
+        # Note: run_agent returns a generator, not an async generator
+        response_stream = rag_pipeline.run_agent(user_input)
         
-        agent_message = rag_pipeline.run_agent(user_input.strip())
-        st.session_state.messages.append(agent_message)
+        # Stream each chunk of the response
+        for chunk in response_stream:
+            await msg.stream_token(chunk)
         
-        # Rerun to update the display
-        st.rerun()
+        # Update the message to finalize it
+        await msg.update()
+        
+    except Exception as e:
+        # Handle any errors that occur during processing
+        error_msg = f"An error occurred while processing your request: {str(e)}"
+        await msg.stream_token(error_msg)
+        await msg.update()
+        print(f"Error in process_user_message: {e}")
 
-# Sidebar with additional options
-with st.sidebar:
-    st.header("Chat Options")
-    
-    # Clear conversation button
-    if st.button("Clear Conversation", type="secondary"):
-        st.session_state.messages = []
-        st.rerun()
+# Optional: Add a callback for when the chat ends
+@cl.on_chat_end
+async def on_chat_end():
+    """Clean up when the chat session ends."""
+    print("Chat session ended")
 
-# Footer
-st.markdown("---")
-st.markdown("*Built with 💙 at [Pinecone](https://pinecone.io)*")
+if __name__ == "__main__":
+    # This allows running the app directly with: python chainlit_app.py
+    import chainlit as cl
+    cl.run()
