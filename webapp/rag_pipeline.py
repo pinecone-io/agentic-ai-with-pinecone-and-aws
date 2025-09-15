@@ -9,6 +9,7 @@
 from datetime import datetime
 import os
 import boto3
+import chainlit as cl
 from web_search_tool import WebSearchTool
 from pinecone_vector_search_tool import PineconeVectorSearchTool
 
@@ -54,33 +55,51 @@ class RAGPipeline:
         }
 
     def _send_conversation_to_bedrock(self, conversation):
-        print("Sending the query to Bedrock:")
-        print(conversation)
-        print("=" * 50)
+        with cl.Step(name="Send conversation to Bedrock") as step:
+            step.input = {"model_id": self.generation_model_id, "input": conversation[-1]["content"][0]}
+            
+            print("Sending the query to Bedrock:")
+            print(conversation)
+            print("=" * 50)
 
-        # Send the conversation, system prompt, and tool configuration, and return the response
-        return self.bedrock.converse(
-            modelId=self.generation_model_id,
-            messages=conversation,
-            system=self.system_prompt,
-            toolConfig=self.tool_config,
-        )
+            # Send the conversation, system prompt, and tool configuration, and return the response
+            response = self.bedrock.converse(
+                modelId=self.generation_model_id,
+                messages=conversation,
+                system=self.system_prompt,
+                toolConfig=self.tool_config,
+            )
+            
+            step.output = {"output": response.get("output", {}).get("message", {}).get("content", [])}
+            return response
 
     def _send_conversation_to_bedrock_stream(self, conversation):
-        print("Sending the query to Bedrock (streaming):")
-        print(conversation)
-        print("=" * 50)
+        with cl.Step(name="Send conversation to Bedrock (streaming)") as step:
+            step.input = {"model_id": self.generation_model_id, "input": conversation[-1]["content"][0]}
+            
+            print("Sending the query to Bedrock (streaming):")
+            print(conversation)
+            print("=" * 50)
 
-        # Send the conversation, system prompt, and tool configuration, and return the streaming response
-        return self.bedrock.converse_stream(
-            modelId=self.generation_model_id,
-            messages=conversation,
-            system=self.system_prompt,
-            toolConfig=self.tool_config,
-        )
+            # Send the conversation, system prompt, and tool configuration, and return the streaming response
+            response = self.bedrock.converse_stream(
+                modelId=self.generation_model_id,
+                messages=conversation,
+                system=self.system_prompt,
+                toolConfig=self.tool_config,
+            )
+            
+            step.output = {"output": response.get("output", {}).get("message", {}).get("content", [])}
+            return response
 
     def _invoke_tool(self, tool_name, tool_input):
-        return self.functions_map[tool_name](tool_input)
+        with cl.Step(name=f"Invoke tool: {tool_name}") as step:
+            step.input = {"tool_name": tool_name, "query": tool_input["query"]}
+            
+            result = self.functions_map[tool_name](tool_input)
+            
+            step.output = {"result": result}
+            return result
 
     def run_agent(self, user_query):
         """Run the agent with streaming response for the final answer.
