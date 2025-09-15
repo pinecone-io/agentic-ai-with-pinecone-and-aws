@@ -30,7 +30,7 @@ Let's dive in and create your first index! In this workshop, we'll do this in th
 4. Select the `Dense` for `Vector type`
 5. Set the `Dimension` of your index to `1024`. This value determines the size of the vectors your index will handle and needs to match that of the embedding model you use.
 6. Set the `Metric` to `cosine`. This value also depends on the embedding model.
-7. Select the `Serverless` option for `Capacity mode`
+7. Make sure the `Serverless` option for `Capacity mode` is selected.
 8. Select the `us-east-1` region.
 9. Finally, click on the `Create index` button at the bottom.
 
@@ -46,7 +46,7 @@ You may have created the default Pinecone API key when setting up your account e
 3. Give your API key a memorable name like `agentic-ai`
 ![Create a Pinecone API key](../assets/02-api-key.png)
 4. Click the `Create key` button
-5. Copy the API key value and save it somewhere safe for use throughout this workshop. You'll need to set it up in each notebook and to run the webapp. You **will not* be able to get the value later.
+5. Copy the API key value and save it somewhere safe for use throughout this workshop. You'll need to set it up each notebook and to run the webapp. You **will not* be able to get the value later.
 
 # Extra learning
 ==

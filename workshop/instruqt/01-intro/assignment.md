@@ -8,23 +8,31 @@ teaser: Learn about Pinecone, AWS, and what we're building today -- an agentic r
 difficulty: ""
 enhanced_loading: null
 ---
+# About this workshop
+==
+
+In this workshop, you'll get practical skills and hands-on experience in building AI applications using Pinecone and AWS. You'll:
+- learn the fundamentals of **vector database concepts**, **Pinecone architecture**, and the latest **concepts of Agentic AI**,
+- **build an end-to-end agentic retrieval-augmented generation (RAG) chat app** using Pinecone, Amazon Bedrock, and Anthropic, and
+- gain confidence to **implement your own business use cases**.
+
 # About Pinecone
 ==
 
-Pinecone is a cloud-native, SaaS-based vector database platform designed for managing and querying high-dimensional vector data, making it a key enabler for building machine learning, artificial intelligence, and data science applications.
+At Pinecone, we're building knowledgable AI. Pinecone is a cloud-native, SaaS-based vector database platform designed for managing and querying high-dimensional vector data, making it a key enabler for building machine learning, artificial intelligence, and data science applications.
 
-The goal of this workshop is to provide participants with practical skills and hands-on experience in building AI applications using Pinecone and AWS. During this workshop, participants will:
-- Learn the fundamentals of vector database concepts and Pinecone architecture.
-- Gain hands-on experience building an end-to-end agentic retrieval-augmented generation (RAG) chat application using Pinecone, Amazon Bedrock, and Anthropic.
-
-This workshop will enhance participants' knowledge of the latest AI concepts on Agentic AI and empower them to confidently implement the learnings to their business use cases.
 
 # Pinecone with AWS
 ===
 
-This diagram shows a complete AI development pipeline using a Pinecone vector database and AWS services for building intelligent applications. Data from various sources (text, web logs, images, videos) stored in Amazon S3 can be processed through AWS Glue ETL pipelines and fed into Pinecone. Pinecone provides hosted embedding and reranking models alongside scalable vector storage with read/write capabilities. This system integrates with Amazon Bedrock for additional embedding and generation capabilities, enabling use cases like AI agents, semantic search, recommendation engines, and data classification through a unified knowledge base architecture.
+Here is a complete pipeline using a **Pinecone vector database** and **AWS services** for building intelligent applications.
 
 ![Pinecone with AWS Architecture](../assets/01-pinecone-with-aws-arch.png)
+
+- From various sources (text, web logs, images, videos), **data can be stored in Amazon S3**, **processed through AWS Glue ETL pipelines**, and **fed into Pinecone**.
+- Pinecone provides **hosted embedding and reranking models** alongside **scalable vector storage** with read/write capabilities.
+- **Integrates with Amazon Bedrock** for additional embedding and generation capabilities
+- **Enables various use cases** like AI agents, semantic search, recommendation engines, and data classification through a unified knowledge base architecture.
 
 # What we're building today
 ==
@@ -48,7 +56,7 @@ Retrieval-augmented generation (RAG) is an architecture that provides the most r
 
 ![Agentic RAG](../assets/01-agentic-rag.png)
 
-RAG consists of four parts: a **data ingestion**, a **data retrieval** an **augmented prompt**, and **generation**.
+RAG consists of four parts: **data ingestion**, **data retrieval**, an **augmented prompt**, and **generation**.
 
 1. Ingestion: authoritative data like company proprietary data is loaded into a data source, like a Pinecone vector database
 2. Retrieval: relevant data is retrieved from an external data source based on a user query

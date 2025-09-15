@@ -21,10 +21,18 @@ tabs:
 difficulty: ""
 enhanced_loading: null
 ---
+# TL;DR
+==
+
+In this module, you'll work through a Jupyter notebook that shows:
+- how to create tools
+- how models use tools
+- how to implement an agentic flow that orchestrates a RAG pipeline by deciding which tools to invoke and when
+
 # Agentic retrieval-augmented generation (RAG)
 ==
 
-Agents are now orchestrators of the core RAG components to:
+Agents are now **orchestrators of the core RAG components** to:
 
 - construct more effective queries
 - access additional retrieval tools
@@ -35,16 +43,16 @@ These operations can be performed by an agent or agents as part of a larger, ite
 
 ![Agentic RAG](../assets/05-agentic-rag.png)
 
-# Building agentic RAG with tools
+# Work through the notebook
 ==
 
-The following notebook shows:
-- how to create tools
-- how models use tools
-- how to implement an agentic flow that invokes multiple tools
+➡️ Now, it's your turn! You'll work through a Jupyter notebook to build **agentic RAG using tool calling:**
 
-To implement agentic RAG:
 1. Navigate to the [Jupyter tab](tab-0)
-2. Open the notebook in the `notebooks` folder called `3_agentic_rag.ipynb`
+2. Open the notebook in the `notebooks` folder called `3_agentic_rag.ipynb` (if it's not already open)
 3. Select `Python 3 (ipykernel)` for the kernel in the upper right
 4. Work through each cell in the notebook
+
+Take some time to work through this notebook to explore how you can orchestrate a RAG pipeline using an agent. The model will decide if, when, and how to use a tool (or multiple tools). In our case, the tools will assist us in retrieval, but tools can also take action like posting a message to a Slack channel or booking a flight.
+
+In the next challenge, you'll work with the demo app, ChatterPine 2000, a Chainlit webapp to interact with this agentic RAG pipeline through a chat interface.
