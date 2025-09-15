@@ -2,9 +2,10 @@
 slug: web-based-rag-chat-app
 id: wt7pwy6p8xnt
 type: challenge
-title: Web-based RAG chat app
-teaser: A Streamlit application that demonstrates an agentic retrieval-augmented generation
-  (RAG) chat interface powered by Pinecone, Amazon Bedrock, and a simple web search.
+title: ChatterPine 2000, a web-based RAG chat app
+teaser: ChatterPine 2000 is a Chainlit application that demonstrates an agentic retrieval-augmented
+  generation (RAG) chat interface powered by Pinecone, Amazon Bedrock, and a simple
+  web search.
 tabs:
 - id: idt5aj6iqids
   title: IDE
@@ -18,17 +19,17 @@ tabs:
   workdir: /agentic-ai-with-pinecone-and-aws/webapp
   cmd: su jovyan
 - id: za4a81dpnlsc
-  title: Chat app
+  title: ChatterPine 2000
   type: service
   hostname: jupyter
-  port: 8501
+  port: 8000
 difficulty: ""
 enhanced_loading: null
 ---
 # Building a web-based RAG chat app
 ==
 
-In this module, we'll incorporate the agentic RAG pipeline, `run_agent`, from the last module and interact with it through a Streamlit web app chat interface. Remember that this `run_agent` function does the following:
+In this module, we'll incorporate the agentic RAG pipeline, `run_agent`, from the last module and interact with it through a Chainlit web app chat interface. Remember that this `run_agent` function does the following:
 
 1. Sends the initial user query to the model through Amazon Bedrock
 2. The model decides if it can answer or if it needs to use a tool and which tool to use
@@ -63,10 +64,27 @@ pip install -r requirements.txt
 Now it's time to run the app:
 
 ```bash,run
-python -m streamlit run app.py
+python -m chainlit run app.py
 ```
 
-Head over to the [Chat app tab](tab-2) and ask your agent some questions. Here are some example questions to ask:
+When you see a message `Your app is available at http://localhost:8000`, the application is up and running. You can see it in the [ChatterPine 2000 tab](tab-2).
+
+> [!WARNING]
+> Chainlit app startup will print links to the application like:
+>
+> ```nocopy
+> ➜ 2025-09-15 10:00:08 - Loaded .env file
+> ➜ 2025-09-15 10:00:09 - Your app is available at http://localhost:8000
+> ➜ 2025-09-15 10:00:11 - Translated markdown file for en-US not found. Defaulting to chainlit.md.
+> ➜ 2025-09-15 10:00:11 - Found token in environment variables.
+> ```
+>
+> ### DO NOT CLICK ON THOSE!
+>
+> They will try to open the app in your browser. However, the browser doesn't have direct access to the application running inside the workshop environment.
+
+
+Head over to the [ChatterPine 2000 tab](tab-2) and ask your agent some questions. Here are some example questions to ask:
 
 - What is the capital of France?
 - Which company did Rod Canion cofound?
