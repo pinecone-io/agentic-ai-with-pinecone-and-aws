@@ -16,8 +16,11 @@ SAMPLE_QUESTIONS = [
     "What is the capital of France?",
     "Which company did Rod Canion cofound?",
     "What is the revenue of Compaq in 2001?",
-    "What is 2001 revenue of the company Rod Canion cofound?",
-    "Changes in Compaq's product offerings and their impacts on sales"
+    "What company did Rod Canion cofound and what is 2001 revenue of that company?",
+    "Changes in Compaq's product offerings and their impacts on sales",
+    "What were Compaq's total revenues and cost of sales for each year from 1997 to 2001?",
+    "What did Rod Canion do before Compaq?",
+    "What did Rod Canion do after Compaq?"
 ]
 
 @cl.on_chat_start
@@ -47,6 +50,9 @@ async def start_chat():
 @cl.action_callback("question_2")
 @cl.action_callback("question_3")
 @cl.action_callback("question_4")
+@cl.action_callback("question_5")
+@cl.action_callback("question_6")
+@cl.action_callback("question_7")
 async def on_action(action: cl.Action):
     """Handle when a user clicks on a sample question."""
     # Process the selected question as if it were a user message
