@@ -104,25 +104,6 @@ class RAGPipeline:
             step.output = {"output": response.get("output", {}).get("message", {}).get("content", [])}
             return response
 
-    def _send_conversation_to_bedrock_stream(self, conversation):
-        with cl.Step(name="Send conversation to Bedrock (streaming)") as step:
-            step.input = {"model_id": self.generation_model_id, "input": conversation[-1]["content"][0]}
-            
-            print("Sending the query to Bedrock (streaming):")
-            print(conversation)
-            print("=" * 50)
-
-            # Send the conversation, system prompt, and tool configuration, and return the streaming response
-            response = self.bedrock.converse_stream(
-                modelId=self.generation_model_id,
-                messages=conversation,
-                system=self.system_prompt,
-                toolConfig=self.tool_config,
-            )
-            
-            step.output = {"output": response.get("output", {}).get("message", {}).get("content", [])}
-            return response
-
     def _invoke_tool(self, tool_name, tool_input):
         with cl.Step(name=f"Invoke tool: {tool_name}") as step:
             step.input = {"tool_name": tool_name, "query": tool_input["query"]}
@@ -201,24 +182,10 @@ class RAGPipeline:
             print("Model response:")
             print(bedrock_response)
             print("=" * 50)
-        
-        # For the final response, use streaming
-        print("Final streaming response:")
+
+        print("Final response:")
+        print(bedrock_response["output"]["message"]["content"][0]["text"])
         print("=" * 50)
+        return bedrock_response["output"]["message"]["content"][0]["text"]
         
-        # Use streaming for the final response
-        stream_response = self._send_conversation_to_bedrock_stream(conversation)
-        
-        # Process the streaming response and yield chunks
-        full_content = ""
-        for event in stream_response['stream']:
-            if 'contentBlockDelta' in event:
-                delta_text = event['contentBlockDelta']['delta']['text']
-                full_content += delta_text
-                print(delta_text, end='', flush=True)
-                
-                # Yield only the text chunk for st.write_stream
-                yield delta_text
-        
-        print("\n" + "=" * 50)
         
