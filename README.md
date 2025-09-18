@@ -32,8 +32,6 @@ A comprehensive workshop and codebase for building intelligent, agentic retrieva
 
 ## 🎯 Workshop learning path
 
-TODO
-
 ### 1. **Introduction & setup** 
 - Learn about Pinecone, AWS, and RAG architecture
 - Create Pinecone account and index
