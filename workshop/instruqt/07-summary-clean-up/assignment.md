@@ -57,7 +57,7 @@ In this workshop you learned:
 
 We'd love to keep chatting with you after this workshop and as you continue your journey using Pinecone. Below are some resources to help you continue learning and building with Pinecone:
 
-- TODO Join the rest of the Pinecone community on Discord
+- Join the rest of the Pinecone community on Discord (ask your instructor for the link)
 - [Grab this workshop, the data, and all the code on GitHub](https://github.com/pinecone-io/agentic-ai-with-pinecone-and-aws)
 - [Read about the limitations of foundation models and how RAG can address them](https://www.pinecone.io/learn/retrieval-augmented-generation/)
 - [Read why RAG is still relevant in 2025](https://www.pinecone.io/learn/rag-2025/)

@@ -13,6 +13,8 @@ owner: pinecone
 developers:
 - jenna@pinecone.io
 - vamshi.e@pinecone.io
+- cory@pinecone.io
+- arjun@pinecone.io
 idle_timeout: 600
 timelimit: 12600
 lab_config:
@@ -21,5 +23,5 @@ lab_config:
   feedback_tab_enabled: false
   loadingMessages: true
   hideStopButton: false
-checksum: "8076528367839296902"
+checksum: "2207604830657811828"
 enhanced_loading: false
