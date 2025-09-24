@@ -11,11 +11,8 @@ icon: ""
 tags: []
 owner: pinecone
 developers:
-- jenna@pinecone.io
-- vamshi.e@pinecone.io
-- cory@pinecone.io
-- arjun@pinecone.io
-idle_timeout: 600
+- community@pinecone.io
+idle_timeout: 1800
 timelimit: 12600
 lab_config:
   sidebar_enabled: true
@@ -23,5 +20,5 @@ lab_config:
   feedback_tab_enabled: false
   loadingMessages: true
   hideStopButton: false
-checksum: "2207604830657811828"
+checksum: "15950053609090905541"
 enhanced_loading: false
