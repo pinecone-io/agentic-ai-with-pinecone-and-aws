@@ -94,30 +94,42 @@ cd webapp
 pip install -r requirements.txt
 ```
 
-For the notebooks:
+For the notebooks, in the project root:
 ```bash
 pip install jupyter pinecone boto3 tqdm ddgs
 ```
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the `webapp/` directory:
+For the webapp, create a `.env` file in the `webapp/` directory:
 
 ```bash
+# Pinecone Configuration
+PINECONE_API_KEY=YOUR_API_KEY
+PINECONE_INDEX_NAME=agentic-ai-with-pinecone-and-aws
+PINECONE_NAMESPACE=__default__
+# This is for non-production projects so we know which sample app the index came from.
+# Remove this and related code for production.
+PINECONE_SOURCE_TAG=pinecone:agentic_ai_with_pinecone_and_aws:webapp
+
 # AWS Configuration
 AWS_REGION=us-east-1
-GENERATION_MODEL_ID=anthropic.claude-3-5-sonnet-20241022-v2:0
-EMBEDDING_MODEL_ID=amazon.titan-embed-text-v1
-
-# Pinecone Configuration
-PINECONE_API_KEY=your-pinecone-api-key
-PINECONE_INDEX_NAME=agentic-ai-with-pinecone-and-aws
-PINECONE_NAMESPACE=default
-PINECONE_SOURCE_TAG=workshop
+GENERATION_MODEL_ID=anthropic.claude-3-haiku-20240307-v1:0
+EMBEDDING_MODEL_ID=amazon.titan-embed-text-v2:0
 
 # Optional: AWS Credentials (if not using IAM roles)
 # AWS_ACCESS_KEY_ID=your-access-key
 # AWS_SECRET_ACCESS_KEY=your-secret-key
+# or
+# AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-token
+```
+
+For the notebooks, you'll need to export the following [AWS credentials (if not using IAM roles)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) before starting the Jupyter server:
+```bash
+AWS_ACCESS_KEY_ID=your-access-key
+AWS_SECRET_ACCESS_KEY=your-secret-key
+# or
+# AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-token
 ```
 
 ## 📚 How to use this repository
@@ -130,6 +142,9 @@ PINECONE_SOURCE_TAG=workshop
    - Each assignment builds upon the previous one and you'll work through Jupyter notebooks in the `notebooks` directory
 
 2. **Run the Jupyter notebooks**:
+
+To run the Jupyter notebooks, you can run the Jupyter server locally (instructions below) or through an IDE like VSCode or Cursor.
+   - From the root directory, run:
    ```bash
    jupyter notebook notebooks/
    ```
